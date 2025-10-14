@@ -44,6 +44,24 @@ app.get('/api/user', (req, res) => {
     });
 });
 
+app.post('/mahasiswa', (req, res) => {
+    const { nama, alamat, agama } = req.body;
+    const sqlQuery = "INSERT INTO biodata (nama, alamat, agama) VALUES (?, ?, ?)";
 
+    db.query(sqlQuery, [nama, alamat, agama], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                message: "Gagal menambahkan data",
+                error: err
+            });
+        } else {
+            res.status(201).json({
+                message: "Data mahasiswa berhasil ditambahkan",
+                insertedId: result.insertId
+            });
+        }
+    });
+});
 
 
