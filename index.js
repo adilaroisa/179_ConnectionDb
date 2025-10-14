@@ -31,6 +31,19 @@ db.connect((err) => {
     console.log('Connected Success');
 });
 
+app.get('/api/user', (req, res) => {
+    const sql = 'SELECT * FROM biodata'; 
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ error: 'Database query error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
 
 
 
