@@ -44,7 +44,7 @@ app.get('/api/user', (req, res) => {
     });
 });
 
-app.post('/mahasiswa', (req, res) => {
+app.post('/api/user', (req, res) => {
     const { nama, alamat, agama } = req.body;
     const sqlQuery = "INSERT INTO biodata (nama, alamat, agama) VALUES (?, ?, ?)";
 
